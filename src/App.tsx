@@ -1,25 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Header } from './components/Header/Header';
+import { ModalAddProduct } from './components/ModalAddProduct/ModalAddProduct';
+import { ModalAddSeller } from './components/ModalAddSeller/ModalAddSeller';
+import { ModalCreateZvit } from './components/ModalCreateZvit/ModalCreateZvit';
+import { ModalZvit } from './components/ModalZvit/ModalZvit';
+import { ProductList } from './components/ProductList/ProductList';
+import { setupStore } from './redux/store';
+import { Provider } from 'react-redux'
+
 
 function App() {
+
+  const store = setupStore();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider store={store}>
+      <Header/>
+      <ProductList/>
+      <ModalCreateZvit/>
+      <ModalZvit/>
+      <ModalAddProduct/>
+      <ModalAddSeller/>
+    </Provider>
   );
 }
 
